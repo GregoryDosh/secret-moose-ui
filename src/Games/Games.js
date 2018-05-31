@@ -69,7 +69,7 @@ GameList.propTypes = {
   classes: PropTypes.object.isRequired,
   username: PropTypes.string.isRequired,
   gameList: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
+    id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     players: PropTypes.number.isRequired,
     status: PropTypes.string.isRequired,
