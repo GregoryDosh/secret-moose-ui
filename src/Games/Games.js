@@ -41,7 +41,6 @@ const GameList = ({classes, username, newGameName, gameList, gameActions}) => {
       <Table className={classes.table}>
         <TableHead>
           <TableRow>
-            <TableCell>Game ID</TableCell>
             <TableCell>Game Name</TableCell>
             <TableCell numeric>Player Count</TableCell>
             <TableCell>Status</TableCell>
@@ -53,7 +52,6 @@ const GameList = ({classes, username, newGameName, gameList, gameActions}) => {
           { gameList.map(n => {
             return (
               <TableRow key={n.id} hover>
-                <TableCell>{n.id}</TableCell>
                 <TableCell>{n.name}</TableCell>
                 <TableCell numeric>{n.players.length}</TableCell>
                 <TableCell>{n.status}</TableCell>
@@ -76,7 +74,6 @@ const GameList = ({classes, username, newGameName, gameList, gameActions}) => {
                 onChange={(event) => gameActions.newGameNameChange(event.target.value)}
               />
             </TableCell>
-            <TableCell />
             <TableCell />
             <TableCell />
             <TableCell>
