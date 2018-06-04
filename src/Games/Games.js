@@ -1,5 +1,7 @@
 import Button from '@material-ui/core/Button'
 
+import TextField from '@material-ui/core/TextField'
+
 import Table from '@material-ui/core/Table'
 import TableBody from '@material-ui/core/TableBody'
 import TableCell from '@material-ui/core/TableCell'
@@ -26,9 +28,14 @@ const styles = (theme) => ({
   button: {
     margin: theme.spacing.unit,
   },
+  textField: {
+    marginLeft: 0,
+    marginRight: 0,
+    width: 200,
+  },
 })
 
-const GameList = ({classes, username, gameList, gameActions}) => {
+const GameList = ({classes, username, newGameName, gameList, gameActions}) => {
   return (
     <React.Fragment>
       <Table className={classes.table}>
@@ -59,6 +66,25 @@ const GameList = ({classes, username, gameList, gameActions}) => {
               </TableRow>
             )
           })}
+          <TableRow hover>
+            <TableCell>New Game</TableCell>
+            <TableCell>
+              <TextField
+                id="game_name"
+                value={newGameName}
+                className={classes.textField}
+                onChange={(event) => gameActions.newGameNameChange(event.target.value)}
+              />
+            </TableCell>
+            <TableCell />
+            <TableCell />
+            <TableCell />
+            <TableCell>
+              <Button variant="outlined" color="primary" className={classes.button} onClick={() => gameActions.createGame(newGameName)}>
+                Create
+              </Button>
+            </TableCell>
+          </TableRow>
         </TableBody>
       </Table>
     </React.Fragment>
@@ -79,7 +105,10 @@ GameList.propTypes = {
   })),
   gameActions: PropTypes.shape({
     joinGame: PropTypes.func.isRequired,
+    createGame: PropTypes.func.isRequired,
+    newGameNameChange: PropTypes.func.isRequired,
   }).isRequired,
+  newGameName: PropTypes.string.isRequired,
 }
 
 GameList.defaultProps = {
@@ -88,13 +117,17 @@ GameList.defaultProps = {
   gameList: [],
   gameActions: {
     joinGame: () => {},
+    createGame: () => {},
+    newGameNameChange: () => {},
   },
+  newGameName: '',
 }
 
 function mapStateToProps (state) {
   return {
     username: state.user.username,
     gameList: state.game.gameList,
+    newGameName: state.user.newGameName,
   }
 }
 

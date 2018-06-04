@@ -1,3 +1,6 @@
+// These are actions not leaving the frontned
+export const NEW_GAME_NAME_CHANGE = 'NEW_GAME_NAME_CHANGE'
+
 // These are the types sent through the websocket
 export const CHANGE_USERNAME = 'CHANGE_USERNAME'
 export const CREATE_GAME = 'CREATE_GAME'

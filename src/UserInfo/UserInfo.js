@@ -4,6 +4,7 @@ import { withStyles } from '@material-ui/core/styles'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import TextField from '@material-ui/core/TextField'
+import Typography from '@material-ui/core/Typography'
 
 import * as userActions from '../actions/userActions'
 
@@ -20,12 +21,19 @@ const styles = (theme) => ({
   menu: {
     width: 200,
   },
+  wrapper: {
+    borderColor: theme.palette.primary.light,
+    borderStyle: 'outset',
+    margin: theme.spacing.unit,
+  },
 })
 
 const UserInfo = ({classes, username, userActions}) => {
   return (
-    <React.Fragment>
-      <h1>Hello {username}</h1>
+    <div className={classes.wrapper}>
+      <Typography variant="title" component="h3" align="center">
+        User Information
+      </Typography>
       <TextField
         id="name"
         label="Name"
@@ -34,7 +42,7 @@ const UserInfo = ({classes, username, userActions}) => {
         onChange={(event) => userActions.changeUsername(event.target.value)}
         margin="normal"
       />
-    </React.Fragment>
+    </div>
   )
 }
 
