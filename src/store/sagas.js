@@ -20,11 +20,23 @@ function * websocketMessageHandler (action) {
   /* eslint-disable no-console */
   let serverMessage = JSON.parse(action.payload.data)
   switch (serverMessage.type) {
-    case 'GAME_LIST_UPDATE':
+    case types.GAME_LIST_UPDATED:
       yield put({
-        type: types.REFRESH_GAME_LIST,
+        type: types.GAME_LIST_UPDATED,
         games: serverMessage.payload,
       })
+      break
+    case types.USERNAME_CHANGED:
+      yield put({
+        type: types.USERNAME_CHANGED,
+        username: serverMessage.payload,
+      })
+      break
+    case types.GAME_JOINED:
+      console.error(serverMessage.payload)
+      break
+    case types.GAME_LEFT:
+      console.error(serverMessage.payload)
       break
     case 'ERROR':
       console.error(serverMessage.payload)

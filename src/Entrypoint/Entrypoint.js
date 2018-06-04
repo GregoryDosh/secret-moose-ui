@@ -71,7 +71,7 @@ Layout.propTypes = {
     disconnectToServer: PropTypes.func.isRequired,
   }).isRequired,
   gameActions: PropTypes.shape({
-    getGames: PropTypes.func.isRequired,
+    updateGameList: PropTypes.func.isRequired,
   }).isRequired,
   server: PropTypes.shape({
     status: PropTypes.string.isRequired,
@@ -87,7 +87,7 @@ Layout.defaultProps = {
     status: 'Disconnected',
   },
   gameActions: {
-    getGames: () => {},
+    updateGameList: () => {},
   },
   websocketActions: {
     connectToServer: () => {},

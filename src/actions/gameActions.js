@@ -10,8 +10,8 @@ export function joinGame (name, id) {
   }
 }
 
-export function getGames () {
+export function updateGameList () {
   return {
-    type: types.GET_GAMES,
+    type: types.UPDATE_GAME_LIST,
   }
 }

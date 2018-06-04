@@ -10,7 +10,7 @@ const initialState = {
 
 export default function gameReducer (state = initialState, action) {
   switch (action.type) {
-    case types.REFRESH_GAME_LIST:
+    case types.GAME_LIST_UPDATED:
       let gameList = []
       for (let g in action.games) {
         gameList.push({
