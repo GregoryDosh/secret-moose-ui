@@ -66,7 +66,11 @@ function * sagaHandler () {
   yield takeEvery(WEBSOCKET_MESSAGE, websocketMessageHandler)
   yield throttle(5000, WEBSOCKET_CLOSED, websocketReconnect)
   yield takeLatest(types.JOIN_GAME, serverSend)
-  yield throttle(500, types.CHANGE_USERNAME, sendName)
+  yield takeLatest(types.CREATE_GAME, serverSend)
+  // This really should be debounce actually.  Throttle will still send
+  // the first name change to the server which the server will then correct
+  // and send back.  So this isn't as ideal I don't think.
+  yield throttle(5000, types.CHANGE_USERNAME, sendName)
   yield takeLatest(WEBSOCKET_OPEN, sendName)
 }
 
