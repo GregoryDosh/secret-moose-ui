@@ -8,8 +8,10 @@ import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 import { renderRoutes } from 'react-router-config'
 import { withStyles } from '@material-ui/core/styles'
-// import { bindActionCreators } from 'redux'
+import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+
+import * as gameActions from '../actions/gameActions'
 
 import { WEBSOCKET_CONNECT, WEBSOCKET_DISCONNECT } from '@samuelcastro/redux-websocket'
 
@@ -68,6 +70,9 @@ Layout.propTypes = {
     connectToServer: PropTypes.func.isRequired,
     disconnectToServer: PropTypes.func.isRequired,
   }).isRequired,
+  gameActions: PropTypes.shape({
+    getGames: PropTypes.func.isRequired,
+  }).isRequired,
   server: PropTypes.shape({
     status: PropTypes.string.isRequired,
   }).isRequired,
@@ -80,6 +85,9 @@ Layout.defaultProps = {
   },
   server: {
     status: 'Disconnected',
+  },
+  gameActions: {
+    getGames: () => {},
   },
   websocketActions: {
     connectToServer: () => {},
@@ -95,6 +103,7 @@ function mapStateToProps (state) {
 
 function mapDispatchToProps (dispatch) {
   return {
+    gameActions: bindActionCreators(gameActions, dispatch),
     websocketActions: {
       connectToServer: () => {
         dispatch({

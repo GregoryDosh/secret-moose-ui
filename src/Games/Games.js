@@ -48,7 +48,7 @@ const GameList = ({classes, username, gameList, gameActions}) => {
               <TableRow key={n.id} hover>
                 <TableCell>{n.id}</TableCell>
                 <TableCell>{n.name}</TableCell>
-                <TableCell numeric>{n.players}</TableCell>
+                <TableCell numeric>{n.players.length}</TableCell>
                 <TableCell>{n.status}</TableCell>
                 <TableCell>{n.created}</TableCell>
                 <TableCell>
@@ -71,7 +71,9 @@ GameList.propTypes = {
   gameList: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
-    players: PropTypes.number.isRequired,
+    players: PropTypes.arrayOf(PropTypes.shape({
+      name: PropTypes.string.isRequired,
+    })),
     status: PropTypes.string.isRequired,
     created: PropTypes.string.isRequired,
   })),

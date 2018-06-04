@@ -9,3 +9,9 @@ export function joinGame (name, id) {
     },
   }
 }
+
+export function getGames () {
+  return {
+    type: types.GET_GAMES,
+  }
+}

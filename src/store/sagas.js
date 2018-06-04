@@ -18,7 +18,21 @@ function * websocketReconnect (action) {
 
 function * websocketMessageHandler (action) {
   /* eslint-disable no-console */
-  console.log(`Got Message`, action)
+  let serverMessage = JSON.parse(action.payload.data)
+  switch (serverMessage.type) {
+    case 'GAME_LIST':
+      yield put({
+        type: types.REFRESH_GAME_LIST,
+        games: serverMessage.payload,
+      })
+      break
+    case 'ERROR':
+      console.error(serverMessage.payload)
+      break
+    default:
+      console.error(`Unknown type ${serverMessage.type} with value ${serverMessage.payload}`)
+      break
+  }
 }
 
 const getUsername = (state) => state.user.username

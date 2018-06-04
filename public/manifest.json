@@ -1,27 +1,10 @@
 {
-  "short_name": "MetroTransit",
-  "name": "Auengun's NexTrip Based Bus Routes",
+  "short_name": "Secret Moose",
+  "name": "Auengun's Secret Moose Character Selection",
   "permissions": [
           "storage"
   ],
-  "icons": [
-    {
-      "src": "launcher-icon-1x.png",
-      "type": "image/png",
-      "sizes": "48x48"
-    },
-    {
-      "src": "launcher-icon-2x.png",
-      "type": "image/png",
-      "sizes": "96x96"
-    },
-    {
-      "src": "launcher-icon-4x.png",
-      "type": "image/png",
-      "sizes": "192x192"
-    }
-  ],
   "display": "standalone",
-  "theme_color": "#9c27b0",
-  "background_color": "#9c27b0"
+  "theme_color": "#F0654B",
+  "background_color": "#F0654B"
 }
