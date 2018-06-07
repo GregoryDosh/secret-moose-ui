@@ -94,9 +94,7 @@ GameList.propTypes = {
   gameList: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
-    players: PropTypes.arrayOf(PropTypes.shape({
-      name: PropTypes.string.isRequired,
-    })),
+    players: PropTypes.arrayOf(PropTypes.string).isRequired,
     status: PropTypes.string.isRequired,
     created: PropTypes.string.isRequired,
   })),
